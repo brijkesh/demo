@@ -17,5 +17,12 @@ public interface UserRepository<User> extends JpaRepository<UserEntity, Integer>
 	////UserEntity findUIdByUId(Integer uId);
 	
 	
+	@Query(value = "select * from user_entity order by lower(user_name )",nativeQuery = true)
+	List<UserEntity> getEmpAscOrder();
+	
+	@Query(value = "select * from user_entity order by lower(user_name) DESC",nativeQuery = true)
+	List<UserEntity> getEmpDscOrder();
+	
+	
 	
 }
