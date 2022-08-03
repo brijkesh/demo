@@ -42,13 +42,25 @@ public class UserController {
 	
 	
 	
-	@GetMapping("/list")
-	public List<UserEntity> getAllUser(){
-		Sort sort = Sort.by("userName").ascending();
-		List<UserEntity> findAll = this.userRepository.findAll(sort);
-		return findAll;
+	@GetMapping("/list/asc")
+	public List<UserEntity> getAllUserAsc(){
+		/*
+		 * Sort sort = Sort.by("userName").ascending(); List<UserEntity> findAll =
+		 * this.userRepository.findAll(sort); return findAll;
+		 */
+		List<UserEntity> listOfUserEntity = userRepository.getEmpAscOrder();
+		return listOfUserEntity;
+		
 	}
-
+	@GetMapping("/list/dsc")
+	public List<UserEntity> getAllUserDsc(){
+		/*
+		 * Sort sort = Sort.by("userName").descending(); List<UserEntity> findAll =
+		 * this.userRepository.findAll(sort); return findAll;
+		 */
+		List<UserEntity> listOfUserEntity = userRepository.getEmpDscOrder();
+		return listOfUserEntity;
+	}
 	
 
 	
